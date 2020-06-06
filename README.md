@@ -1,0 +1,2 @@
+# qt_sp_graphicsview
+基于QWidget的一个简单视图架构
