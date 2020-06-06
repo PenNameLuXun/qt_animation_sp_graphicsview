@@ -7,6 +7,8 @@ class GRAPHICVIEW_EXPORT CSpGraphicViewAnimationWidget:public CSpGraphicViewAnim
 public:
     CSpGraphicViewAnimationWidget(QWidget* parent = nullptr);
 
+    ~CSpGraphicViewAnimationWidget();
+
     void setBgColor(const QColor& color);
 
     void addItem(CSpGraphicViewItem* pItem,
