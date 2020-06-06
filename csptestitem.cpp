@@ -1,0 +1,19 @@
+#include "csptestitem.h"
+
+CSpTestItem::CSpTestItem(CSpGraphicViewItem *pFatherItem):
+CSpGraphicViewAnimationIndexItem(pFatherItem)
+{
+
+}
+
+CSpTestItem::~CSpTestItem()
+{
+
+}
+
+void CSpTestItem::paintSelf(QPainter *painter, const CSpGraphicViewPaintEventInfo *paintInfo)
+{
+    CSpGraphicViewAnimationIndexItem::paintSelf(painter,paintInfo);
+
+    painter->drawText(paintInfo->visiRectF,QString("%1").arg(index()),QTextOption(Qt::AlignCenter));
+}

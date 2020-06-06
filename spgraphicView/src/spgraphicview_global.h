@@ -1,0 +1,13 @@
+﻿#ifndef GRAPHICVIEW_GLOBAL_H
+#define GRAPHICVIEW_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(GRAPHICVIEW_LIBRARY)
+
+#  define GRAPHICVIEW_EXPORT Q_DECL_EXPORT
+#else
+#  define GRAPHICVIEW_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // GRAPHICVIEW_GLOBAL_H
