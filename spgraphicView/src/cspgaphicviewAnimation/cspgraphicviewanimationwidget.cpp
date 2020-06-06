@@ -12,6 +12,11 @@ CSpGraphicViewAnimationWidget::CSpGraphicViewAnimationWidget(QWidget *parent):
 {
 
 }
+
+CSpGraphicViewAnimationWidget::~CSpGraphicViewAnimationWidget()
+{
+
+}
 void CSpGraphicViewAnimationWidget::setBgColor(const QColor &color)
 {
     _bgColor = color;
