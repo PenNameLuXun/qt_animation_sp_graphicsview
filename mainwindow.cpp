@@ -49,7 +49,7 @@ void MainWindow::init()
     ui->listWidget->structModel()->setSpaceX(6);
     ui->listWidget->structModel()->setSpaceY(6);
 
-    for(int i = 0;i<1000;++i)
+    for(int i = 0;i<10000;++i)
     {
         CSpTestItem* pItem = new CSpTestItem(nullptr);
         ui->listWidget->insertItem(pItem,-1,false);
