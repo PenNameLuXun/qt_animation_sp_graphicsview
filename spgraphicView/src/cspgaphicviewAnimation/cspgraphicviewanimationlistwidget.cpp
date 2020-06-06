@@ -11,8 +11,7 @@ CSpGraphicViewAnimationListWidget::CSpGraphicViewAnimationListWidget(QWidget *pa
     _model.setSpaceY(0);
 
     connect(&_model,&CSpGraphicStructModel::modelChanged,this,[=](){
-        updateItemsStructureAndGeometry();
-        viewPort()->update();
+        this->CSpGraphicViewAnimation::refresh();
     });
 }
 
@@ -374,6 +373,9 @@ void CSpGraphicViewAnimationListWidget::refresh(int indexB, int indexE, bool isR
     if(indexE == -1)
         indexE = _topItemList.size() - 1;
 
+    bool  isSameSize = structModel()->itemSameSize();
+    QSize unitSz     = structModel()->iconItemSz();
+
     if(_model.model() == CSpGraphicStructModel::List_Model)
     {
         qreal unitWidth = viewportRectF().width();
@@ -381,12 +383,19 @@ void CSpGraphicViewAnimationListWidget::refresh(int indexB, int indexE, bool isR
         int y = 0;
         if(lastIndexB>=0 && lastIndexB<_topItemList.size())
         {
-            y = static_cast<int>(_topItemList[lastIndexB]->boundRect().bottom()) + _model.spaceY();
+            if(isSameSize)
+            {
+                y = unitSz.height()*(lastIndexB+1) + _model.spaceY()*lastIndexB;
+            }
+            else
+            {
+                y = static_cast<int>(_topItemList[lastIndexB]->boundRect().bottom()) + _model.spaceY();
+            }
         }
         for(int i = indexB;i<=indexE;++i)
         {
             CSpGraphicViewAnimationIndexItem* pItem = _topItemList[i];
-            QRectF rectf = QRectF(0,y,/*pItem->boundRect().width()*/unitWidth,pItem->boundRect().height());
+            QRectF rectf = QRectF(0,y,unitWidth,isSameSize? unitSz.height():pItem->boundRect().height());
             pItem->setBoundRect(rectf);
             CSpGraphicViewAnimationIndexItem::setIndexItemIndex(pItem,i);
             y = static_cast<int>(rectf.bottom()) + _model.spaceY();
@@ -399,12 +408,19 @@ void CSpGraphicViewAnimationListWidget::refresh(int indexB, int indexE, bool isR
         int x = 0;
         if(lastIndexB>=0 && lastIndexB<_topItemList.size())
         {
-            x = static_cast<int>(_topItemList[lastIndexB]->boundRect().right()) + _model.spaceX();
+            if(isSameSize)
+            {
+                x = unitSz.width()*(lastIndexB+1) + _model.spaceX()*lastIndexB;
+            }
+            else
+            {
+                x = static_cast<int>(_topItemList[lastIndexB]->boundRect().right()) + _model.spaceX();
+            }
         }
         for(int i = indexB;i<=indexE;++i)
         {
             CSpGraphicViewAnimationIndexItem* pItem = _topItemList[i];
-            QRectF rectf = QRectF(x,0,pItem->boundRect().width(),unitHeight/*pItem->boundRect().height()*/);
+            QRectF rectf = QRectF(x,0,isSameSize?unitSz.width():pItem->boundRect().width(),unitHeight);
             pItem->setBoundRect(rectf);
             CSpGraphicViewAnimationIndexItem::setIndexItemIndex(pItem,i);
             x = static_cast<int>(rectf.right()) + _model.spaceX();

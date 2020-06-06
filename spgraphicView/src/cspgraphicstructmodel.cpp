@@ -15,6 +15,15 @@ CSpGraphicStructModel::~CSpGraphicStructModel()
 void CSpGraphicStructModel::setModel(CSpGraphicStructModel::ListModel ml)
 {
     _model = ml;
+
+    emit modelChanged();
+}
+
+void CSpGraphicStructModel::setItemSameSize(bool b)
+{
+    _itemsSameSize = b;
+
+    emit modelChanged();
 }
 
 void CSpGraphicStructModel::setIconItemSize(const QSize &sz)

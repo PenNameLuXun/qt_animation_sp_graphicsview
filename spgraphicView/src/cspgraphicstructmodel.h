@@ -18,6 +18,9 @@ public:
     void      setModel(ListModel ml);
     inline ListModel model(){return _model;}
 
+    void      setItemSameSize(bool b);
+    inline bool itemSameSize(){return _itemsSameSize;}
+
     void      setIconItemSize(const QSize& sz);
     inline QSize     iconItemSz(){return _iconItemSz;}
 
@@ -80,6 +83,8 @@ private:
     QSize      _iconItemSz         = QSize(80,80);
 
     qreal      _offsetWidth        = 0;
+
+    bool       _itemsSameSize      = true;
 };
 
 #endif // CGRAPHICSTRUCTMODEL_H

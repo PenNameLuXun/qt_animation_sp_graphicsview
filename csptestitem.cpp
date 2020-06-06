@@ -15,5 +15,5 @@ void CSpTestItem::paintSelf(QPainter *painter, const CSpGraphicViewPaintEventInf
 {
     CSpGraphicViewAnimationIndexItem::paintSelf(painter,paintInfo);
 
-    painter->drawText(paintInfo->visiRectF,QString("%1").arg(index()),QTextOption(Qt::AlignCenter));
+    painter->drawText(paintInfo->rectF,QString("%1").arg(index()),QTextOption(Qt::AlignCenter));
 }

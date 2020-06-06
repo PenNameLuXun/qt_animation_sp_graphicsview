@@ -16,7 +16,8 @@ HEADERS += \
     $$PWD/spgraphicView/src/cspgraphicviewmouseeventinfo.h \
     $$PWD/spgraphicView/src/spgraphicview_global.h \
     $$PWD/spgraphicView/src/cspgraviewbtn.h \
-    $$PWD/spgraphicView/src/csprealslider.h
+    $$PWD/spgraphicView/src/csprealslider.h \
+    mainwindow.h
 SOURCES += \
     $$PWD/main.cpp \
     $$PWD/csptestitem.cpp \
@@ -25,11 +26,15 @@ SOURCES += \
     $$PWD/spgraphicView/src/cspgraphicviewitem.cpp \
     $$PWD/spgraphicView/src/cspgraphicviewmouseeventinfo.cpp \
     $$PWD/spgraphicView/src/cspgraviewbtn.cpp \
-    $$PWD/spgraphicView/src/csprealslider.cpp
+    $$PWD/spgraphicView/src/csprealslider.cpp \
+    mainwindow.cpp
 
 
 include($$PWD/spgraphicView/src/cspgaphicviewAnimation/spgraphicView_animation.pri)
 
 INCLUDEPATH += $$PWD/spgraphicView/src
 INCLUDEPATH += $$PWD/spgraphicView/src/cspgaphicviewAnimation
+
+FORMS += \
+    mainwindow.ui
 
